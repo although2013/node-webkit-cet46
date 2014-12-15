@@ -3,10 +3,10 @@
   "name": "CET46",
   "window": {
     "title": "CET46",
-    "toolbar": true,
+    "toolbar": false,
     "frame": true,
     "width": 540,
-    "height": 350,
+    "height": 340,
     "position": "center",
     "resizable": true
   }

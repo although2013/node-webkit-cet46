@@ -59,7 +59,7 @@ td {
 
 .left-panel {
   float: left;
-  min-height: 500px;
+  min-height: 250px;
 }
 
 .left-table > tr {
