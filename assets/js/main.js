@@ -28,9 +28,6 @@ function getCet46 (kh, xm) {
       var reg = /<table.+class=\"cetTable\"[\s\S]+<\/table>/
       str = body.match(reg)
 
-      if (!fs.existsSync("user-cached")){
-        fs.mkdir("user-cached")
-      }
       fs.writeFileSync("user-cached/"+kh+".html", str);
 
       $("center").append(str);
@@ -80,14 +77,7 @@ function showCached(str) {
 
     };
 
-
-    $("tr").click(function(){
-      var kh = $(this).children('.user-kh').text();
-      var xm = $(this).children('.user-xm').text();
-      $("#kh").val(kh);
-      $("#xm").val(xm);
-    });
-
+    tr_click_bind();
     close_click_bind();
 
   }
@@ -103,6 +93,8 @@ function changeQueryBtn (trans) {
     $("#submit").css("background-color","#5cb85c");
   };
 }
+
+
 
 
 function updateCachedList() {
@@ -129,6 +121,7 @@ function updateCachedList() {
         <td><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></td>\
                                </tr>');
 
+    tr_click_bind();
     close_click_bind();
   };
 }
@@ -188,5 +181,14 @@ function close_click_bind () {
     };
     str = new_arr.join(";");
     fs.writeFileSync(n_p_file, str);
+  });
+}
+
+function tr_click_bind(){
+  $("tr").click(function(){
+    var kh = $(this).children('.user-kh').text();
+    var xm = $(this).children('.user-xm').text();
+    $("#kh").val(kh);
+    $("#xm").val(xm);
   });
 }

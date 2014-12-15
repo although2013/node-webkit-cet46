@@ -29,6 +29,10 @@
       showCached(name_passwds);
     };
 
+    if (!fs.existsSync("user-cached")){
+      fs.mkdir("user-cached")
+    }
+
 
       $("#submit").bind("click",function(){
         var kh = $("#kh").val()
