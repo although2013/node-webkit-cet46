@@ -78,7 +78,6 @@ function showCached(str) {
       <td><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></td>\
                                </tr>');
 
-
     };
 
 
@@ -89,28 +88,8 @@ function showCached(str) {
       $("#xm").val(xm);
     });
 
-    $(".close").click(function() {
-      var d_kh = $(this).parent().parent().children('.user-kh').text();
-      $(this).parent().parent().remove()
-      str = getCached(n_p_file)
-      arr = str.split(";")
-      for (var i = 0; i < arr.length; i++) {
-        line = arr[i].split(",")
-        if (line[0] === d_kh) {
-          delete arr[i];
-        }
-      };
-      var new_arr = []
-      for (var i = 0; i < arr.length; i++) {
-        if (arr[i] !== undefined ) {
-          new_arr.push(arr[i]);
-        };
-      };
+    close_click_bind();
 
-      str = new_arr.join(";");
-      fs.writeFileSync(n_p_file, str);
-
-    })
   }
 }
 
@@ -132,13 +111,10 @@ function updateCachedList() {
   length_node = $('.left-table').children().length
 
   if (length_file === length_node) {
-    console.log("====")
     return
   }else if (length_file - length_node === 1) {
-    console.log("!!!====")
     //length_file - 1 => 如果有一个元素，那么length为1，而该元素下标为0
     line = data.split(";")[length_file - 1]
-    console.log(line)
     line = line.split(",")
     if ($('.left-table').length === 0) {
       $(".left-panel").append('<h4>已保存的用户</h4>');
@@ -147,14 +123,14 @@ function updateCachedList() {
     };
     
 
-
     $('.left-table').append('<tr>\
                                 <td class="user-kh">'+line[0]+'</td>\
                                 <td class="user-xm">'+line[1]+'</td>\
         <td><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></td>\
                                </tr>');
-  };
 
+    close_click_bind();
+  };
 }
 
 function back() {
@@ -192,4 +168,25 @@ function writeCacheControll (file, str_line, web_response) {
 }
 
 
-
+function close_click_bind () {
+  $(".close").click(function() {
+    var d_kh = $(this).parent().parent().children('.user-kh').text();
+    $(this).parent().parent().remove()
+    str = getCached(n_p_file)
+    arr = str.split(";")
+    for (var i = 0; i < arr.length; i++) {
+      line = arr[i].split(",")
+      if (line[0] === d_kh) {
+        delete arr[i];
+      }
+    };
+    var new_arr = []
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] !== undefined ) {
+        new_arr.push(arr[i]);
+      };
+    };
+    str = new_arr.join(";");
+    fs.writeFileSync(n_p_file, str);
+  });
+}
