@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/jquery-1.11.1.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+
+    <div class="left-panel">
+    </div>
+    <center>
+      <queryform>
+        <h1>查询四六级成绩</h1>
+        <p>考号: <input class="form-control" type="text" id="kh" /></p>
+        <p>姓名: <input class="form-control" type="text" id="xm" /></p>
+        <button class="btn btn-success" id="submit"> 查 询 </button>
+      </queryform>
+    </center>
+
+    <script type="text/javascript">
+    var name_passwds = getCached("name-password.txt")
+    if (name_passwds.length > 5) {
+      showCached(name_passwds);
+    };
+
+
+      $("#submit").bind("click",function(){
+        var kh = $("#kh").val()
+        var xm = $("#xm").val()
+        var str = $("#kh").val() + "," + $("#xm").val() + ";"
+
+
+        
+        $("queryform").hide();
+        changeQueryBtn('doing');
+
+        writeCacheControll("name-password.txt", str)
+        
+        getCet46(kh, xm);
+
+
+        $(".left-panel").hide();
+        $("body").css("background-color","#dff0d8")
+
+        changeQueryBtn('end');
+
+
+      });
+
+      
+    </script>
+  </body>
+</html>
+

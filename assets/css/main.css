@@ -1,0 +1,75 @@
+body {
+  font-family: "Heiti SC Light","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+h1 {
+  font-size: 22px;
+  color:#179639;
+  margin-bottom: 30px;
+}
+
+
+table {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+
+th {
+  font-size: 16px;
+  padding-right: 12px;
+}
+
+
+td {
+  font-size: 16px;
+}
+
+.fontBold {
+  font-weight:bold;
+}
+.colorRed {
+  color: red;
+}
+.color666 {
+  color: #555555;
+}
+
+.form-control {
+  margin-bottom: 8px;
+  margin-left:5px; 
+  display: inline-block;
+  width: 55%;
+}
+
+.form-control :focus{
+  border-color: #66afe9;
+  outline: 0;
+   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.btn {
+  border-width: 0px;
+  border-radius: 3px;
+  padding: 6px 25px 6px 25px;
+}
+
+
+.left-panel {
+  float: left;
+  min-height: 500px;
+}
+
+.left-table > tr {
+  cursor: pointer;
+}
+
+.user-xm {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.user-kh {
+  display: none;
+}

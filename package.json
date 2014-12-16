@@ -1,0 +1,13 @@
+{
+  "main": "index.html",
+  "name": "CET46",
+  "window": {
+    "title": "CET46",
+    "toolbar": true,
+    "frame": true,
+    "width": 540,
+    "height": 350,
+    "position": "center",
+    "resizable": true
+  }
+}
